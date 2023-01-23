@@ -12,7 +12,7 @@ export const ItemScreen = () => {
     navgation.setOptions({
       headerShown: false,
     });
-  });
+  },[navgation]);
 
   return (
     <SafeAreaView className="flex-1 bg-white relative">

@@ -21,7 +21,7 @@ import notfound from "../assets/NotFound.png";
 import { FontAwesome } from "@expo/vector-icons";
 import { ItemCardContainer } from "../components/itemCardContainer";
 
-export const Discover = () => {
+export const Discover = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [mainDate, setMainDate] = useState(["1"]);
   const navgation = useNavigation();
@@ -30,7 +30,7 @@ export const Discover = () => {
     navgation.setOptions({
       headerShown: false,
     });
-  });
+  },[navgation]);
 
   return (
     <SafeAreaView className="flex-1 bg-white relative ">

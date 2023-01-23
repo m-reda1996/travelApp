@@ -7,13 +7,13 @@ import * as Animatable from "react-native-animatable";
 import hero from "../assets/hero.png";
 
 export function HomeScreen() {
-  const navgation = useNavigation();
+  const navigation = useNavigation();
 
   useLayoutEffect(() => {
-    navgation.setOptions({
+    navigation.setOptions({
       headerShown: false,
     });
-  });
+  },[navigation]);
 
   return (
     <SafeAreaView className="bg-white flex-1  relative">
@@ -48,7 +48,7 @@ export function HomeScreen() {
           className="h-full w-full object-cover mt-20 absolute -bottom-10"
         />
           <TouchableOpacity 
-          onPress={() => navgation.navigate('Discover')}
+          onPress={() => navigation.navigate('Discover')}
           className="absolute bottom-16 w-24 h-24 rounded-full justify-center items-center border-l-2 border-r-2 border-t-4 border-[#efe97b]">
             <Animatable.View
               animation={"pulse"}
