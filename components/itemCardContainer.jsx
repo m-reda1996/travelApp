@@ -21,7 +21,7 @@ export const ItemCardContainer = ({ imageSrc, title, location }) => {
         {title?.length > 13 ? `${title.slice(0, 13)}..` : title}
       </Text>
       <View className="flex-row justify-center items-center gap-2">
-        <FontAwesome name="map-marker" size={20} color="red" />
+        <FontAwesome name="map-marker" size={20} color="green" />
         <Text className=" text-red-500 text-[16px] font-bold ">
           {" "}
           {location?.length > 15 ? `${location.slice(0, 15)}..` : location}

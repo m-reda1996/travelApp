@@ -48,7 +48,7 @@ export function HomeScreen() {
           className="h-full w-full object-cover mt-20 absolute -bottom-10"
         />
           <TouchableOpacity 
-          onPress={() => navigation.navigate('Discover')}
+          onPress={() => navigation.navigate('Bottom')}
           className="absolute bottom-16 w-24 h-24 rounded-full justify-center items-center border-l-2 border-r-2 border-t-4 border-[#efe97b]">
             <Animatable.View
               animation={"pulse"}

@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useLayoutEffect } from "react";
 
 import { Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export const Setting  = () =>{
     const navigation = useNavigation();
@@ -14,10 +15,10 @@ export const Setting  = () =>{
     },[navigation]);
   
     return (
-        <View>
+        <SafeAreaView>
             <Text>
-                how are you 2
+                setting
             </Text>
-        </View>
+        </SafeAreaView>
     )
 }
