@@ -11,99 +11,16 @@ import {
   View,
 } from "react-native";
 import { slides } from "../assets/onboardData";
+import { Footer } from "../components/Onboarding/footer";
+import { Slide } from "../components/Onboarding/slide";
 
 const { width, height } = Dimensions.get("window");
 
 const COLORS = { primary: "#282534", white: "#fff" };
 
-const Slide = ({ item }) => {
-  return (
-    <View style={{ alignItems: "center" }}>
-      <Image
-        source={item.image}
-        style={{
-          height: "75%",
-          width,
-          borderBottomRightRadius: 30,
-          borderBottomLeftRadius: 30,
-        }}
-      />
-      <Text style={style.title}>{item.title}</Text>
-      <Text style={style.subTitle}>{item.subtitle}</Text>
-    </View>
-  );
-};
-
 export const Onboarding = ({ navigation }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const ref = useRef(null);
-  const Footer = () => {
-    return (
-      <View
-        style={{
-          height: height * 0.25,
-          justifyContent: "center",
-          paddingHorizontal: 20,
-        }}
-      >
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "center",
-            marginTop: 30,
-          }}
-        >
-          {slides.map((i, index) => (
-            <View
-              key={index}
-              style={[
-                style.indicator,
-                currentSlide == index && {
-                  backgroundColor: COLORS.white,
-                  width: 25,
-                },
-              ]}
-            />
-          ))}
-        </View>
-        <View>
-          <View style={{ marginTop: 70, marginBottom: 30 }}>
-            {currentSlide == slides.length - 1 ? (
-              <View>
-                <TouchableOpacity style={[style.btn2]}           onPress={() => navigation.navigate('Home')}>
-                  <Text style ={style.TextBtn}>get start</Text>
-                </TouchableOpacity>
-              </View>
-            ) : (
-              <View style={{ flexDirection: "row" }}>
-                <TouchableOpacity
-                  style={[
-                    style.btn,
-                    {
-                      backgroundColor: COLORS.primary,
-                      borderWidth: 1,
-                      borderColor: COLORS.white,
-                    },
-                  ]}
-                >
-                  <Text
-                    style={[style.TextBtn, { color: COLORS.white }]}
-                    onPress={skip}
-                  >
-                    Skip
-                  </Text>
-                </TouchableOpacity>
-                <View style={{ width: 15 }} />
-                <TouchableOpacity style={style.btn} onPress={goNextslide}>
-                  <Text style={style.TextBtn}>next</Text>
-                </TouchableOpacity>
-              </View>
-            )}
-          </View>
-        </View>
-      </View>
-    );
-  };
 
   const updateCurrentSildeIndex = (e) => {
     const contentOffsetX = e.nativeEvent.contentOffset.x;
@@ -128,6 +45,8 @@ export const Onboarding = ({ navigation }) => {
     <View style={{ flex: 1, backgroundColor: COLORS.primary }}>
       <StatusBar backgroundColor={COLORS.primary} barStyle={"light-content"} />
       <FlatList
+        pagingEnabled
+        bounces={false}
         ref={ref}
         data={slides}
         contentContainerStyle={{ height: height * 0.75 }}
@@ -137,7 +56,7 @@ export const Onboarding = ({ navigation }) => {
         renderItem={({ item }) => <Slide item={item} />}
       />
 
-      <Footer />
+      <Footer currentSlide={currentSlide} skip={skip} goNextslide={goNextslide} />
     </View>
   );
 };
@@ -172,9 +91,9 @@ const style = StyleSheet.create({
     borderRadius: 5,
     justifyContent: "center",
     alignItems: "center",
-    flex : 1
+    flex: 1,
   },
-  btn2 : {
+  btn2: {
     backgroundColor: COLORS.white,
     paddingVertical: 15,
     paddingHorizontal: 40,

@@ -16,7 +16,7 @@ export function HomeScreen() {
   },[navigation]);
 
   return (
-    <SafeAreaView className="bg-white flex-1  relative">
+    <SafeAreaView className="bg-white flex-1  relative overflow-hidden">
       <View className="flex-row mt-6 px-7 items-center space-x-4">
         <View className="w-16 h-16 bg-black rounded-full items-center justify-center">
           <Text className="text-[#efe97b] text-3xl font-semibold">Go</Text>
